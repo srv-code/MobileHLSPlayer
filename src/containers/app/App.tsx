@@ -1,14 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -26,12 +16,15 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import VideoPlayer from '../../components/videoPlayer/VideoPlayer';
+import {labels} from '../../constants/labels/app';
 
 declare const global: {HermesInternal: null | {}};
 
 const streamLinks = [
   'https://content.jwplatform.com/manifests/yp34SRmf.m3u8',
   'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8',
+  'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
   'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
 
   'https://videos-fms.jwpsrv.com/0_5fe1a7d5_0xe61ae6e851cd9a177525173b112dd4eb59214174/content/conversions/LOPLPiDX/videos/IFBsp7yL-24721146.mp4.m3u8',
@@ -43,9 +36,12 @@ const streamLinks = [
 ];
 
 const App = () => {
+  const [videoSource, setVideoSource] = useState<string>();
+
   const styles = StyleSheet.create({
     scrollView: {
-      backgroundColor: Colors.lighter,
+      // backgroundColor: 'blue',
+      // backgroundColor: Colors.lighter,
     },
     engine: {
       position: 'absolute',
@@ -53,6 +49,7 @@ const App = () => {
     },
     body: {
       backgroundColor: Colors.white,
+      backgroundColor: 'green',
     },
     sectionContainer: {
       marginTop: 32,
@@ -83,61 +80,28 @@ const App = () => {
   });
 
   return (
-    <View>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: '#fefefe',
+      }}>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <View>
-            <Text>HLS Stream Player</Text>
-          </View>
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
+        <ScrollView contentInsetAdjustmentBehavior="automatic">
+          <View
+            style={{
+              alignItems: 'center',
+              alignContent: 'center',
+              justifyContent: 'center',
+              flex: 1,
+              // display: 'none',
+            }}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>HLS Streaming Video</Text>
+              <Text style={styles.sectionTitle}>{labels.appTitle}</Text>
               <Text style={styles.sectionDescription}>
-                This player plays the HLS streaming video.
+                {labels.appDescription}
               </Text>
-              <Video
-                style={{
-                  borderWidth: 1,
-                  height: 200,
-                  width: 300,
-                }}
-                source={{
-                  uri: streamLinks[0],
-                  type: 'm3u8',
-                }}
-                rate={1.0}
-                volume={10}
-                isMuted={false}
-                resizeMode="cover"
-                shouldPlay={false}
-                useNativeControls={true}
-                isLooping
-                // style={{ width: 300, height: 300 }}
-
-                onLoadStart={() => ({
-                  isNetwork: true,
-                  type: '',
-                  uri: streamLinks[0],
-                  // 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
-                })}
-                onError={(a) => console.log('onError:', a)}
-                onBuffer={() => console.log('onBuffer')}
-                onLoad={() => console.log('onLoad')}
-                onProgress={() => console.log('onProgress')}
-                onSeek={() => console.log('onSeek')}
-                onVideoError={() => console.log('onVideoError')}
-                // onLoadStart={() => console.log('onLoadStart')}
-                onEnd={() => console.log('onEnd')}
-                paused={false}
-              />
+              <VideoPlayer source={videoSource} />
             </View>
           </View>
         </ScrollView>
