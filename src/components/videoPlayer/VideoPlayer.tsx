@@ -46,10 +46,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
       <View style={styles.videoContainer}>
         <NativeVideoPlayer
           style={styles.videoPlayer}
-          toggleResizeModeOnFullscreen={true}
-          source={{
-            uri: props.source,
-          }}
+          toggleResizeModeOnFullscreen
+          source={{ uri: props.source }}
           resizeMode="cover"
           useNativeControls
           onLoadStart={() => ({
