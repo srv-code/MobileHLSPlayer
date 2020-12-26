@@ -30,6 +30,10 @@ import {
 declare const global: {HermesInternal: null | {}};
 
 const streamLinks = [
+  'https://content.jwplatform.com/manifests/yp34SRmf.m3u8',
+  'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8',
+  'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
+
   'https://videos-fms.jwpsrv.com/0_5fe1a7d5_0xe61ae6e851cd9a177525173b112dd4eb59214174/content/conversions/LOPLPiDX/videos/IFBsp7yL-24721146.mp4.m3u8',
   'https://videos-fms.jwpsrv.com/0_5fe1a7d5_0xbfcfe5519b7ffed2cebda9791d54965ab95ac4cc/content/conversions/LOPLPiDX/videos/IFBsp7yL-24721151.mp4.m3u8',
   'https://videos-fms.jwpsrv.com/0_5fe1a7d5_0x19afd8635b74b718d8ca8f2e32bfd0484a6df1fd/content/conversions/LOPLPiDX/videos/IFBsp7yL-24721148.mp4.m3u8',
@@ -102,17 +106,28 @@ const App = () => {
               <Video
                 style={{
                   borderWidth: 1,
-                  // flex: 1,
                   height: 200,
                   width: 300,
                 }}
+                source={{
+                  uri: streamLinks[0],
+                  type: 'm3u8',
+                }}
+                rate={1.0}
+                volume={10}
+                isMuted={false}
+                resizeMode="cover"
+                shouldPlay={false}
+                useNativeControls={true}
+                isLooping
+                // style={{ width: 300, height: 300 }}
+
                 onLoadStart={() => ({
                   isNetwork: true,
                   type: '',
                   uri: streamLinks[0],
                   // 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
                 })}
-                source={{uri: streamLinks[0]}}
                 onError={(a) => console.log('onError:', a)}
                 onBuffer={() => console.log('onBuffer')}
                 onLoad={() => console.log('onLoad')}
