@@ -1,4 +1,4 @@
-import {ListItemData} from '../interfaces/app';
+import { ListItemData } from '../interfaces/app';
 
 export const listData: ListItemData[] = [
   {

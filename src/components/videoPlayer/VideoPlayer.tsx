@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, Text, ViewStyle} from 'react-native';
-import Video from 'react-native-video';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, ViewStyle } from 'react-native';
+import NativeVideoPlayer from 'react-native-video-controls';
 
 interface VideoPlayerProps {
   style?: ViewStyle;
@@ -13,7 +13,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
 
   const styles = StyleSheet.create({
     container: {
-      borderRadius: 5,
+      borderRadius: 10,
       padding: 10,
       elevation: 4,
       shadowColor: 'black',
@@ -37,8 +37,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
         }}>
         {props.title}
       </Text>
-      <View style={{alignItems: 'center'}}>
-        <Video
+      <View
+        style={{
+          flex: 1,
+          alignSelf: 'center',
+        }}>
+        <NativeVideoPlayer
           style={{
             // borderWidth: 1,
             borderRadius: 5,
@@ -46,17 +50,18 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
             height: 250,
             width: 320,
           }}
+          toggleResizeModeOnFullscreen={true}
           source={{
             uri: props.source,
             // type: 'm3u8',
           }}
-          rate={1.0}
-          volume={10}
-          isMuted={false}
+          // rate={1.0}
+          // volume={10}
+          // isMuted={false}
           resizeMode="cover"
-          shouldPlay={false}
+          // shouldPlay={false}
           useNativeControls={true}
-          isLooping
+          // isLooping
           // style={{ width: 300, height: 300 }}
 
           onLoadStart={() => ({

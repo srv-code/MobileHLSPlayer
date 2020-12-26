@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,12 +9,12 @@ import {
   SectionList,
   FlatList,
 } from 'react-native';
-import {Container, Header, Content, ListItem} from 'native-base';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import { Container, Header, Content, ListItem } from 'native-base';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import VideoPlayer from '../../components/videoPlayer/VideoPlayer';
-import {labels} from '../../constants/labels/app';
-import {ListItemData} from '../../constants/interfaces/app';
-import {listData} from '../../constants/data/app';
+import { labels } from '../../constants/labels/app';
+import { ListItemData } from '../../constants/interfaces/app';
+import { listData } from '../../constants/data/app';
 
 const App = () => {
   const styles = StyleSheet.create({
@@ -58,7 +58,7 @@ const App = () => {
     },
   });
 
-  const renderVideoSection = ({item}: {item: ListItemData}) => (
+  const renderVideoSection = ({ item }: { item: ListItemData }) => (
     <VideoPlayer
       style={{
         marginBottom: 20,
@@ -75,7 +75,7 @@ const App = () => {
         backgroundColor: '#fefefe',
       }}>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <Header
           style={{
             alignItems: 'center',
@@ -89,12 +89,15 @@ const App = () => {
             {labels.appTitle}
           </Text>
         </Header>
-        <Content style={{flexGrow: 1}}>
+        <Content style={{ flexGrow: 1 }}>
           <ScrollView
             alwaysBounceVertical
             contentInsetAdjustmentBehavior="automatic"
             // style={{ borderWidth: 3, }}
-            contentContainerStyle={{paddingHorizontal: 20, marginVertical: 15}}>
+            contentContainerStyle={{
+              paddingHorizontal: 20,
+              marginVertical: 15,
+            }}>
             <FlatList
               data={listData}
               keyExtractor={(item, index) => `${item.title}_${index}}`}
