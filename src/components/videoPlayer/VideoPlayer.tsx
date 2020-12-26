@@ -36,7 +36,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
       borderRadius: 5,
       marginTop: 5,
       height: 250,
-      width: 320,
     },
   });
 
