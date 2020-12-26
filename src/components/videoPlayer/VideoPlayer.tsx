@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text, ViewStyle } from 'react-native';
 import NativeVideoPlayer from 'react-native-video-controls';
 
 interface VideoPlayerProps {
   style?: ViewStyle;
   title: string;
-  source?: string;
+  source: string;
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
-  const [isPaused, setIsPaused] = useState<boolean>(true);
-
   const styles = StyleSheet.create({
     container: {
       borderRadius: 10,
@@ -19,66 +17,47 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
       shadowColor: 'black',
       shadowOffset: {
         width: 0,
-        height: 1,
+        height: 0,
       },
       shadowOpacity: 0.2,
       shadowRadius: 1.41,
       backgroundColor: '#d8d8ff',
       ...props.style,
     },
+    titleText: {
+      fontWeight: '300',
+      fontSize: 20,
+    },
+    videoContainer: {
+      flex: 1,
+      alignSelf: 'center',
+    },
+    videoPlayer: {
+      borderRadius: 5,
+      marginTop: 5,
+      height: 250,
+      width: 320,
+    },
   });
 
   return (
     <View style={styles.container}>
-      <Text
-        style={{
-          fontWeight: '300',
-          fontSize: 20,
-        }}>
-        {props.title}
-      </Text>
-      <View
-        style={{
-          flex: 1,
-          alignSelf: 'center',
-        }}>
+      <Text style={styles.titleText}>{props.title}</Text>
+      <View style={styles.videoContainer}>
         <NativeVideoPlayer
-          style={{
-            // borderWidth: 1,
-            borderRadius: 5,
-            marginTop: 5,
-            height: 250,
-            width: 320,
-          }}
+          style={styles.videoPlayer}
           toggleResizeModeOnFullscreen={true}
           source={{
             uri: props.source,
-            // type: 'm3u8',
           }}
-          // rate={1.0}
-          // volume={10}
-          // isMuted={false}
           resizeMode="cover"
-          // shouldPlay={false}
-          useNativeControls={true}
-          // isLooping
-          // style={{ width: 300, height: 300 }}
-
+          useNativeControls
           onLoadStart={() => ({
             isNetwork: true,
             type: '',
             uri: props.source,
-            // 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
           })}
-          onError={(a) => console.log('onError:', a)}
-          onBuffer={() => console.log('onBuffer')}
-          onLoad={() => console.log('onLoad')}
-          onProgress={() => console.log('onProgress')}
-          onSeek={() => console.log('onSeek')}
-          onVideoError={() => console.log('onVideoError')}
-          // onLoadStart={() => console.log('onLoadStart')}
-          onEnd={() => console.log('onEnd')}
-          paused={isPaused}
+          paused
         />
       </View>
     </View>

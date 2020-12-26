@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
-  View,
   Text,
   StatusBar,
-  SectionList,
   FlatList,
 } from 'react-native';
-import { Container, Header, Content, ListItem } from 'native-base';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { Container, Header, Content } from 'native-base';
 import VideoPlayer from '../../components/videoPlayer/VideoPlayer';
 import { labels } from '../../constants/labels/app';
 import { ListItemData } from '../../constants/interfaces/app';
@@ -18,90 +15,57 @@ import { listData } from '../../constants/data/app';
 
 const App = () => {
   const styles = StyleSheet.create({
-    scrollView: {
-      // backgroundColor: 'blue',
-      // backgroundColor: Colors.lighter,
+    container: {
+      flex: 1,
+      backgroundColor: '#fefefe',
     },
-    engine: {
-      position: 'absolute',
-      right: 0,
+    safeAreaView: {
+      flex: 1,
     },
-    body: {
-      backgroundColor: Colors.white,
-      backgroundColor: 'green',
+    header: {
+      alignItems: 'center',
     },
-    sectionContainer: {
-      marginTop: 32,
-      paddingHorizontal: 24,
+    headerText: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: 'white',
     },
-    sectionTitle: {
-      fontSize: 24,
-      fontWeight: '600',
-      color: Colors.black,
+    content: {
+      flexGrow: 1,
     },
-    sectionDescription: {
-      marginTop: 8,
-      fontSize: 18,
-      fontWeight: '400',
-      color: Colors.dark,
+    scrollViewContent: {
+      paddingHorizontal: 20,
+      marginVertical: 15,
     },
-    highlight: {
-      fontWeight: '700',
-    },
-    footer: {
-      color: Colors.dark,
-      fontSize: 12,
-      fontWeight: '600',
-      padding: 4,
-      paddingRight: 12,
-      textAlign: 'right',
+    videoCard: {
+      marginBottom: 20,
     },
   });
 
-  const renderVideoSection = ({ item }: { item: ListItemData }) => (
+  const renderVideoCard = ({ item }: { item: ListItemData }) => (
     <VideoPlayer
-      style={{
-        marginBottom: 20,
-      }}
+      style={styles.videoCard}
       title={item.title}
       source={item.videoSource}
     />
   );
 
   return (
-    <Container
-      style={{
-        flex: 1,
-        backgroundColor: '#fefefe',
-      }}>
+    <Container style={styles.container}>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={{ flex: 1 }}>
-        <Header
-          style={{
-            alignItems: 'center',
-          }}>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-              color: 'white',
-            }}>
-            {labels.appTitle}
-          </Text>
+      <SafeAreaView style={styles.safeAreaView}>
+        <Header style={styles.header}>
+          <Text style={styles.headerText}>{labels.appTitle}</Text>
         </Header>
-        <Content style={{ flexGrow: 1 }}>
+        <Content style={styles.content}>
           <ScrollView
             alwaysBounceVertical
             contentInsetAdjustmentBehavior="automatic"
-            // style={{ borderWidth: 3, }}
-            contentContainerStyle={{
-              paddingHorizontal: 20,
-              marginVertical: 15,
-            }}>
+            contentContainerStyle={styles.scrollViewContent}>
             <FlatList
               data={listData}
               keyExtractor={(item, index) => `${item.title}_${index}}`}
-              renderItem={renderVideoSection}
+              renderItem={renderVideoCard}
             />
           </ScrollView>
         </Content>
