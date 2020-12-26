@@ -1,3 +1,4 @@
+import {Container, Content} from 'native-base';
 import React, {useState} from 'react';
 import {
   SafeAreaView,
@@ -80,33 +81,37 @@ const App = () => {
   });
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: '#fefefe',
-      }}>
+    <Container
+    // style={{
+    //   flex: 1,
+    //   backgroundColor: '#fefefe',
+    // }}
+    >
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <View
-            style={{
-              alignItems: 'center',
-              alignContent: 'center',
-              justifyContent: 'center',
-              flex: 1,
-              // display: 'none',
-            }}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>{labels.appTitle}</Text>
-              <Text style={styles.sectionDescription}>
-                {labels.appDescription}
-              </Text>
-              <VideoPlayer source={videoSource} />
+        <Header />
+        <Content>
+          <ScrollView contentInsetAdjustmentBehavior="automatic">
+            <View
+              style={{
+                alignItems: 'center',
+                alignContent: 'center',
+                justifyContent: 'center',
+                flex: 1,
+                // display: 'none',
+              }}>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>{labels.appTitle}</Text>
+                <Text style={styles.sectionDescription}>
+                  {labels.appDescription}
+                </Text>
+                <VideoPlayer source={videoSource} />
+              </View>
             </View>
-          </View>
-        </ScrollView>
+          </ScrollView>
+        </Content>
       </SafeAreaView>
-    </View>
+    </Container>
   );
 };
 
