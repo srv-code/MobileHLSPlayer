@@ -11,7 +11,7 @@ interface VideoPlayerProps {
 const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
   const styles = StyleSheet.create({
     container: {
-      borderRadius: 10,
+      borderRadius: 7,
       padding: 10,
       elevation: 4,
       shadowColor: 'black',

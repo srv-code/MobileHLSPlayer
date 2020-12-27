@@ -31,11 +31,10 @@ const App = () => {
     },
     list: {
       flex: 1,
-      paddingHorizontal: 20,
-      paddingVertical: 15,
     },
     videoCard: {
-      marginBottom: 20,
+      marginHorizontal: 20,
+      marginVertical: 10,
     },
   });
 
@@ -55,6 +54,7 @@ const App = () => {
           <Text style={styles.headerText}>{labels.appTitle}</Text>
         </Header>
         <FlatList
+          alwaysBounceHorizontal
           style={styles.list}
           data={listData}
           keyExtractor={(item, index) => `${item.title}_${index}}`}
