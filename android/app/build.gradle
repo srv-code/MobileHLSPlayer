@@ -181,7 +181,7 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-video-exoplayer') 
+    implementation project(':react-native-video-exoplayer')
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation fileTree(dir: "libs", include: ["*.jar"])
