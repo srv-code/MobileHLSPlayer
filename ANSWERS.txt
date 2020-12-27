@@ -1,0 +1,33 @@
+Q1. What's your favourite state management library for react and why?
+A: I prefer using the React Redux state management library and the main reasons are below:
+  1. Predictable state updates - This make it easier to understand how the data flow works in the application.
+  2. Use of "pure" reducer functions - This makes logic easier to test, and enables useful features like "time-travel debugging".
+  3. Centralizing the state - This makes it easier to implement things like logging changes to the data, or persisting data between page refreshes.
+
+
+Q2. Write some react native best practices.
+A: Some React Native best practices are:
+  1. Component should be broken down into two main categories: 
+    a. Presentation Component - concerned with how things look
+    b. Container Component - concerned with how things work
+  2. Using functional component for stateless presentational component.
+  3. Using class component for stateful container component.
+  4. Key of each element in list should be unique.
+  5. Manage static image resources.
+  6. Using a state management library for managing states and business logic.
+  7. Using platform specific code and styles.
+
+
+Q3. Which coding style you prefer wet or dry and why?
+A: I prefer the DRY coding style and the reasons are below:
+  1. Maintainability: It is one of its biggest benefits. It maintains a single source of truth and makes use of it at different places which helps in reducing redundancies and also makes the code easier to test and maintain.
+  2. Readability: DRY code is more readable as it refers to only a single source instance and is used at several places.
+  3. Reuse: DRY inherently promotes reuse of code because we are merging 2 or more instances of repeating code into a single block of code.
+  4. Testing: In case of unit tests and integration tests, the more paths and functions have to be covered using the tests, the more code have to be written for tests. If the code is not repeated, just one main path needs to be tested.
+
+
+Q4. What do you prefer expo or vanilla react native and why?
+A: I prefer vanilla React Native and the main reasons are below:
+  1. Native modules - The biggest advantage of vanilla React Nativeis that we can link the packages that use native modules and connect our native modules written in native languages.
+  2. Freeom of choice - We can decide by ourself what React Native version to use.
+  3. Lesser package size - When  using Expo the app has a big size as it is built with all Expo SDK solutions, even those we don’t use.
